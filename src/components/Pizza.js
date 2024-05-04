@@ -1,23 +1,20 @@
 import React from 'react'
 
 export default function Pizza(props) {
-    console.log(props.data);
-    const pizza = props.data;
+
+    const pizza = props.pizza;
+
+    if (pizza.soldOut) return null;
+
     return (
-        <div>
-            {pizza.map((item, index) => {
-                return (
-                    <div key={index} className="pizza">
-                        <img src={item.photoName}
-                             style={{width: '400px', height: '400px'}}
-                             alt={item.name}/>
-                        <div>
-                            <h3>{item.name}</h3>
-                            <p>{item.ingredients}</p>
-                            <p>{item.price}</p>
-                        </div>
-                    </div>
-                )
-            })}
-        </div>)
+        <li className="pizza">
+            <img src={pizza.photoName}
+                 style={{width: '200px', height: '200px', borderRadius: '10px'}}
+                 alt={pizza.name}/>
+            <div>
+                <h3>{pizza.name}</h3>
+                <p>{pizza.ingredients}</p>
+                <p>{pizza.price}</p>
+            </div>
+        </li>)
 }
